@@ -20,6 +20,26 @@ int main(){
             new_image << tempStorageString << endl;
         }
     }
+
+    old_image.close(); 
+    new_image.close();
+
+    // modify monument into blueMonument
+    ofstream filtered_image;
+    ifstream image; 
+
+    image.open("monument.ppm");
+    filtered_image.open("blueMonument.ppm");
+
+    // COPY HEADER INFO
+    string type, width, height, max_val; 
+    image >> type >> width >> height >> max_val; // extracts, stops at /n or space
+
+    filtered_image << type << "\n" << width << " " << height << "\n" << max_val << endl; // insert P3 into filtered_image. have to store in temporary string stream first
+    
+
+
+    
  
     return 0;
 }   
