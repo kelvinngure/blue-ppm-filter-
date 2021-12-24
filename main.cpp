@@ -1,5 +1,6 @@
 #include <fstream> // we want to insert into the output stream which is our image file
 #include <iostream>
+#include <string>
 
 using namespace std;
 
@@ -36,7 +37,24 @@ int main(){
     image >> type >> width >> height >> max_val; // extracts, stops at /n or space
 
     filtered_image << type << "\n" << width << " " << height << "\n" << max_val << endl; // insert P3 into filtered_image. have to store in temporary string stream first
-    
+
+    // loop through and update values
+    int red, green, blue;
+    string r,g,b;
+    for(int i = 0; i<stoi(height); i++){
+        for(int j = 0; j < stoi(width); j++){
+            image >> r;
+            image >> g;
+            image >> b;
+
+            blue << stoi(b);
+
+            blue += 30;
+            if(blue > 255){ blue = 255;}
+
+            filtered_image << r << " " << g << " " << blue << " " << endl;
+        }
+    }
 
 
     
